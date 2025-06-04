@@ -5,7 +5,7 @@ from typing import List, Dict, Any, Optional
 import numpy as np
 
 from config import DATA_LOG
-from models.safety_model import SafetyModel
+from safety_model import SafetyModel
 
 def simulate_safety_features() -> tuple:
     lighting = random.choice(["good", "poor"])

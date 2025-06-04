@@ -19,20 +19,21 @@ from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from config import DATA_LOG, MODEL_VERSION, MODEL_PATH
-from models.safety_model import SafetyModel
-from services.external_apis import (
+
+from config import DATA_LOG
+from safety_model import SafetyModel
+from external_apis import (
     get_lapd_crime_count,
     get_forecasted_weather,
     get_openroute_path
 )
-from utils.helpers import (
+from helpers import (
     simulate_safety_features,
     encode_features,
     log_segment,
     retrain_model
 )
-from data.data_processor import DataProcessor
+from data_processor import DataProcessor
 
 # Configure logging
 logging.basicConfig(
@@ -59,7 +60,6 @@ app.add_middleware(
 # Constants
 ORS_API_KEY = "5b3ce3597851110001cf62483583f4943d614cdb84fd147b8ddf4a71"
 WEATHER_API_KEY = "2f8f46849820b1e349ceff6d33269056"
-DATA_LOG = "segment_logs.csv"
 MODEL_DIR = "models"
 MODEL_VERSION = "v2.0-rf"
 MODEL_PATH = os.path.join(MODEL_DIR, f"safety_model_{MODEL_VERSION}.pkl")
@@ -257,7 +257,7 @@ async def predict_safety(location: LocationRequest):
         }
         
         # Make prediction
-        prediction = model.predict(
+        prediction = safety_model.predict(
             list(features.values()),
             lat=location.lat,
             lon=location.lon
@@ -277,7 +277,7 @@ async def get_model_info():
     try:
         return {
             "model_path": str(MODEL_PATH),
-            "feature_names": model.feature_names,
+            "feature_names": safety_model.feature_names,
             "last_updated": datetime.fromtimestamp(MODEL_PATH.stat().st_mtime).isoformat() if MODEL_PATH.exists() else None
         }
     except Exception as e:
