@@ -5,9 +5,9 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-from models.safety_model import SafetyModel
-from models.feature_engineering import FeatureEngineering
-from data.data_processor import DataProcessor
+from safety_model import SafetyModel
+from feature_engineering import FeatureEngineering
+from data_processor import DataProcessor
 from config import MODEL_PATH, SCALER_PATH, FEATURE_ENGINEERING_PATH
 
 # Set up logging

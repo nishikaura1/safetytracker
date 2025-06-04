@@ -5,8 +5,8 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-from models.safety_model import SafetyModel
-from data.data_processor import DataProcessor
+from safety_model import SafetyModel
+from data_processor import DataProcessor
 from config import MODEL_PATH
 
 # Set up logging

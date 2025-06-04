@@ -14,8 +14,8 @@ import optuna
 from scipy import stats
 
 from config import MODEL_PATH, SCALER_PATH, MODEL_PARAMS, FEATURE_NAMES
-from services.lapd_data import LAPDDataProcessor
-from models.feature_engineering import FeatureEngineering
+from lapd_data import LAPDDataProcessor
+from feature_engineering import FeatureEngineering
 
 logger = logging.getLogger(__name__)
 

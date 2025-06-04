@@ -11,6 +11,9 @@ MODEL_PATH = MODEL_DIR / "safety_model.joblib"
 SCALER_PATH = MODEL_DIR / "scaler.joblib"
 FEATURE_ENGINEERING_PATH = MODEL_DIR / "feature_engineering.joblib"
 
+# Default path for logged training data
+DATA_LOG = BASE_DIR / "segment_logs.csv"
+
 # API Configuration
 LAPD_API_URL = "https://data.lacity.org/resource/2nrs-mtv8.json"
 WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather"
