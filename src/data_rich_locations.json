@@ -1,0 +1,17 @@
+[
+  {"neighborhood": "Downtown LA", "latitude": 34.0407, "longitude": -118.2468},
+  {"neighborhood": "Hollywood", "latitude": 34.0928, "longitude": -118.3287},
+  {"neighborhood": "South LA", "latitude": 33.9982, "longitude": -118.2851},
+  {"neighborhood": "Koreatown", "latitude": 34.0617, "longitude": -118.3089},
+  {"neighborhood": "Venice", "latitude": 33.9850, "longitude": -118.4695},
+  {"neighborhood": "Westwood", "latitude": 34.0635, "longitude": -118.4455},
+  {"neighborhood": "Boyle Heights", "latitude": 34.0298, "longitude": -118.2117},
+  {"neighborhood": "Watts", "latitude": 33.9381, "longitude": -118.2468},
+  {"neighborhood": "Echo Park", "latitude": 34.0782, "longitude": -118.2606},
+  {"neighborhood": "Hollywood High School", "latitude": 34.0983, "longitude": -118.3267},
+  {"neighborhood": "Manual Arts High School", "latitude": 34.0113, "longitude": -118.2914},
+  {"neighborhood": "Roosevelt High School", "latitude": 34.0331, "longitude": -118.2117},
+  {"neighborhood": "Dorsey High School", "latitude": 34.0156, "longitude": -118.3402},
+  {"neighborhood": "Fairfax High School", "latitude": 34.0837, "longitude": -118.3617},
+  {"neighborhood": "Los Angeles High School", "latitude": 34.0561, "longitude": -118.3451}
+] 
