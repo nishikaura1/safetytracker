@@ -107,10 +107,11 @@ def get_safe_route(
             features = encode_features(
                 crime_count, lighting, reports, weather, terrain, mud_risk
             )
-            safety_score = safety_model.predict(features)
-            
-            scores.append(safety_score)
-            log_segment(features, safety_score)
+            score_dict = safety_model.predict(features)
+            score_value = score_dict.get("adjusted_score", score_dict.get("base_score", 0))
+
+            scores.append(score_value)
+            log_segment(features, score_value)
 
             segments.append({
                 "segment_id": f"S{i+1}",
@@ -127,18 +128,22 @@ def get_safe_route(
                 "weather": {
                     "forecasted": weather
                 },
-                "safety_score": safety_score,
+                "safety_score": score_value,
                 "icon": "⚠️" if mud_risk or lighting == "poor" or crime_count > 10 else "✅"
             })
 
         # Train model with new data
         training_metrics = retrain_model(safety_model)
 
+        average_score = sum(scores) / len(scores) if scores else 0
+        min_score = min(scores) if scores else 0
+        max_score = max(scores) if scores else 0
         summary = {
             "total_segments": len(segments),
-            "highest_risk_score": min(scores),
-            "lowest_risk_score": max(scores),
-            "overall_risk": "high" if min(scores) < 0.4 else "medium" if min(scores) < 0.7 else "low",
+            "highest_risk_score": min_score,
+            "lowest_risk_score": max_score,
+            "average_score": average_score,
+            "overall_risk": "high" if min_score < 0.4 else "medium" if min_score < 0.7 else "low",
             "model_metrics": training_metrics
         }
 
