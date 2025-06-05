@@ -172,7 +172,9 @@ function App() {
       }
     })
       .then((response) => {
-        setPrediction(response.data.summary || response.data);
+        const summary = response.data.summary || {};
+        const baseScore = summary.average_score;
+        setPrediction({ ...summary, base_score: baseScore });
         setLoading(false);
       })
       .catch((err) => {
